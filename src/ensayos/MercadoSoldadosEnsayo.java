@@ -1,14 +1,16 @@
 package ensayos;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import modelo.Batallon;
 import vista.Conversores.Generador;
-import javax.swing.JButton;
+import vista.info.MercadoSoldadosInfo;
 
 public class MercadoSoldadosEnsayo extends JPanel {
 	private JLabel lblBatallonId;
@@ -25,16 +27,16 @@ public class MercadoSoldadosEnsayo extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public MercadoSoldadosEnsayo(Batallon batallon) {
+	public MercadoSoldadosEnsayo(MercadoSoldadosInfo info) {
 		setLayout(null);
-		especialidades = Generador.getEspecialidadesEnsayo(batallon.getTipo(),mioAdapter);
+		especialidades = Generador.getEspecialidadesEnsayo(info.getTipoBatallon(),mioAdapter);
 
 		JLabel lblBatallonNumero = new JLabel("Batallon numero ");
 		int height2 = 16;
 		lblBatallonNumero.setBounds(62, 51, 165, height2);
 		add(lblBatallonNumero);
 
-		lblBatallonId = new JLabel(String.valueOf(batallon.getId()));
+		lblBatallonId = new JLabel(String.valueOf(info.getBatallonID()));
 		lblBatallonId.setBounds(256, 51, 56, height2);
 		add(lblBatallonId);
 
@@ -42,7 +44,7 @@ public class MercadoSoldadosEnsayo extends JPanel {
 		lblMax.setBounds(395, 51, 56, height2);
 		add(lblMax);
 
-		lblMaxSoldados = new JLabel(String.valueOf(batallon.getMaximoSoldados()));
+		lblMaxSoldados = new JLabel(String.valueOf(info.getMaxSoldados()));
 		lblMaxSoldados.setBounds(482, 51, 56, height2);
 		add(lblMaxSoldados);
 
@@ -50,7 +52,7 @@ public class MercadoSoldadosEnsayo extends JPanel {
 		lblTipo.setBounds(62, 135, 56, height2);
 		add(lblTipo);
 
-		lblTipoSoldado = new JLabel(String.valueOf(batallon.getTipo()));
+		lblTipoSoldado = new JLabel(String.valueOf(info.getTipoBatallon()));
 		lblTipoSoldado.setBounds(171, 135, 56, height2);
 		add(lblTipoSoldado);
 		int y = 223;
@@ -68,6 +70,11 @@ public class MercadoSoldadosEnsayo extends JPanel {
 		add(lblTotal);
 
 		JButton btnOk = new JButton("ok");
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnOk.setBounds(497, 416, 97, 25);
 		add(btnOk);
 

@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import ensayos.MercadoSoldadosEnsayo;
 import modelo.Batallon;
 import modelo.Tipo;
+import vista.info.MercadoSoldadosInfo;
 
 public class MercadoSoldadosPrueba extends JFrame {
 
@@ -37,7 +38,8 @@ public class MercadoSoldadosPrueba extends JFrame {
 	public MercadoSoldadosPrueba() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 678, 479);
-		contentPane = new MercadoSoldadosEnsayo(new Batallon(1, Tipo.infanteria));
+		MercadoSoldadosInfo mercadoSoldadosInfo=new MercadoSoldadosInfo(new Batallon(1, Tipo.infanteria));
+		contentPane = new MercadoSoldadosEnsayo(mercadoSoldadosInfo);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
