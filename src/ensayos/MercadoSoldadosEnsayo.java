@@ -1,5 +1,6 @@
 package ensayos;
 
+import java.awt.event.FocusAdapter;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
@@ -14,13 +15,19 @@ public class MercadoSoldadosEnsayo extends JPanel {
 	private JLabel lblMaxSoldados;
 	private ArrayList<EspecialidadSoldadosEnsayo> especialidades;
 	private JLabel lblTipoSoldado;
+	private JLabel lblTotal;
 
+	FocusAdapter mioAdapter=new FocusAdapter() {
+		public void focusLost(java.awt.event.FocusEvent e) {
+			lblTotal.setText(String.valueOf(sumaSoldados()));
+		};
+	};
 	/**
 	 * Create the panel.
 	 */
 	public MercadoSoldadosEnsayo(Batallon batallon) {
 		setLayout(null);
-		especialidades = Generador.getEspecialidadesEnsayo(batallon.getTipo());
+		especialidades = Generador.getEspecialidadesEnsayo(batallon.getTipo(),mioAdapter);
 
 		JLabel lblBatallonNumero = new JLabel("Batallon numero ");
 		int height2 = 16;
@@ -56,7 +63,7 @@ public class MercadoSoldadosEnsayo extends JPanel {
 		lblTotalf.setBounds(62, 390, 56, height2);
 		add(lblTotalf);
 
-		JLabel lblTotal = new JLabel(String.valueOf(sumaSoldados()));
+		lblTotal = new JLabel(String.valueOf(sumaSoldados()));
 		lblTotal.setBounds(245, 390, 56, height2);
 		add(lblTotal);
 

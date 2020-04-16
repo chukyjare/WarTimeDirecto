@@ -9,6 +9,7 @@ import modelo.Especialidad;
 import java.beans.PropertyChangeListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
 import java.beans.PropertyChangeEvent;
 
 public class EspecialidadSoldadosEnsayo extends JPanel {
@@ -26,7 +27,7 @@ public class EspecialidadSoldadosEnsayo extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public EspecialidadSoldadosEnsayo(Especialidad especialidad) {
+	public EspecialidadSoldadosEnsayo(Especialidad especialidad,FocusAdapter focusAdapter) {
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		
 		JLabel lblNewLabel = new JLabel("Especialidad     :");
@@ -39,13 +40,7 @@ public class EspecialidadSoldadosEnsayo extends JPanel {
 		add(lblCantidadc);
 		
 		txtCantidad = new JTextField("0");
-		txtCantidad.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("donde action listener");
-			}
-		});
+		txtCantidad.addFocusListener(focusAdapter);
 		add(txtCantidad);
 		txtCantidad.setColumns(10);
 
