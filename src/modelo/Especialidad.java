@@ -14,5 +14,7 @@ public enum Especialidad {
 		return tipo;
 	}
 	
-	
+	public static Especialidad getEspecialidad(String nombre) {
+		return Especialidad.valueOf(nombre);
+	}
 }

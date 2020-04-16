@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import vista.Conversores.Generador;
+import vista.info.EspecialidadesInfo;
 import vista.info.MercadoSoldadosInfo;
 
 public class MercadoSoldadosEnsayo extends JPanel {
@@ -24,6 +25,7 @@ public class MercadoSoldadosEnsayo extends JPanel {
 			lblTotal.setText(String.valueOf(sumaSoldados()));
 		};
 	};
+	private JButton btnOk;
 	/**
 	 * Create the panel.
 	 */
@@ -69,18 +71,23 @@ public class MercadoSoldadosEnsayo extends JPanel {
 		lblTotal.setBounds(245, 390, 56, height2);
 		add(lblTotal);
 
-		JButton btnOk = new JButton("ok");
-		btnOk.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
+		btnOk = new JButton("ok");
+		
 		btnOk.setBounds(497, 416, 97, 25);
 		add(btnOk);
 
 	}
+	
+	protected ArrayList<EspecialidadesInfo> getEspecialidades() {
+		ArrayList<EspecialidadesInfo> especialidadesInfos=new ArrayList<EspecialidadesInfo>();
+		for (EspecialidadSoldadosEnsayo especialidad: especialidades) {
+			especialidadesInfos.add(especialidad.getInfo());
+		}
+		return especialidadesInfos;
+	}
 
-	private int sumaSoldados() {
+
+	public int sumaSoldados() {
 		int total = 0;
 		for (EspecialidadSoldadosEnsayo especialidadSoldadosEnsayo : especialidades) {
 			String text = especialidadSoldadosEnsayo.getTxtCantidad().getText();
@@ -92,6 +99,14 @@ public class MercadoSoldadosEnsayo extends JPanel {
 
 	public JLabel getLblBatallonId() {
 		return lblBatallonId;
+	}
+
+	public JButton getBtnOk() {
+		return btnOk;
+	}
+
+	public void setBtnOk(JButton btnOk) {
+		this.btnOk = btnOk;
 	}
 
 	public JLabel getLblMaxSoldados() {

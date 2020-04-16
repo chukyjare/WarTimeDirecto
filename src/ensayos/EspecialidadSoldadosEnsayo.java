@@ -6,6 +6,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JTextField;
 
 import modelo.Especialidad;
+import vista.info.EspecialidadesInfo;
+
 import java.beans.PropertyChangeListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -55,4 +57,7 @@ public class EspecialidadSoldadosEnsayo extends JPanel {
 
 	}
 
+	public EspecialidadesInfo getInfo() {
+		return new EspecialidadesInfo(Especialidad.getEspecialidad(lblEspecialidad.getText()), Integer.valueOf(txtCantidad.getText()));
+	}
 }
