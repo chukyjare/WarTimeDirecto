@@ -28,7 +28,7 @@ public class MercadoSoldadosPrueba extends JFrame {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}
+			}	
 		});
 	}
 
