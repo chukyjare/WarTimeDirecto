@@ -1,20 +1,16 @@
 package ensayos;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
+import java.awt.event.FocusAdapter;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import modelo.Especialidad;
 import vista.info.EspecialidadesInfo;
-
-import java.beans.PropertyChangeListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.beans.PropertyChangeEvent;
 
 public class EspecialidadSoldadosEnsayo extends JPanel {
 	private JLabel lblEspecialidad;
