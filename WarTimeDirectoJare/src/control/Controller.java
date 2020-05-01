@@ -6,7 +6,7 @@ import modelo.Batallon;
 import modelo.Coordenada;
 import modelo.Soldado;
 import vista.info.EspecificacionSoldadosInfo;
-
+//Union de Localizador y pobladorControler
 public class Controller {
 	private Juego juego;
 	private Batallon batallon;
