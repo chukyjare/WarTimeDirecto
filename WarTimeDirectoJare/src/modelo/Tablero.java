@@ -4,6 +4,14 @@ import vista.info.FichaInfo;
 
 public class Tablero {
 	private int ancho, alto;
+	
+	public int getAncho() {
+		return ancho;
+	}
+
+	public int getAlto() {
+		return alto;
+	}
 	// Como tambien puede ser un castillo, habrá que remodelar esto
 	private Matriz<Coordenada, Casilla> casillas;
 
@@ -18,10 +26,13 @@ public class Tablero {
 		return casillas.getElement(coordenada);
 	}
 
-	public void insertar(Batallon batallon,Coordenada coordenada) {
-		casillas.insertElement(coordenada, batallon);
-	}
-	public void insertar(Casilla casilla,Coordenada coordenada) {
-		casillas.insertElement(coordenada, casilla);
+	
+	public boolean insertar(Casilla casilla,Coordenada coordenada) {
+		boolean respuesta=false;
+		if (!casillas.contieneElemento(casilla) && !casillas.contieneClave(coordenada)) {
+			casillas.insertElement(coordenada, casilla);
+			respuesta=true;
+		}
+		return respuesta;
 	}
 }

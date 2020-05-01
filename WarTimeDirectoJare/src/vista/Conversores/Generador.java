@@ -7,6 +7,7 @@ import java.util.Arrays;
 
 import javax.swing.JPanel;
 
+import control.Juego;
 import modelo.Batallon;
 import modelo.Casilla;
 import modelo.Coordenada;
@@ -21,6 +22,7 @@ import vista.info.EjercitoInfo;
 import vista.info.EspecialidadSoldadoInfo;
 import vista.info.FichaInfo;
 import vista.info.MercadoSoldadoInfo;
+import vista.info.TableroUIInfo;
 
 public class Generador {
 
@@ -43,13 +45,13 @@ public class Generador {
 				ejercito.getInfanteria(), ejercito.getCaballeria(), ejercito.getArqueria());
 	}
 
-	private static FichaInfo getFichaInfo(Tablero tablero, Coordenada coordenada) {
+	public static FichaInfo getFichaInfo(Tablero tablero, Coordenada coordenada) {
 		Casilla casilla = tablero.getCasilla(coordenada);
 		FichaInfo fichaInfo=null;
 		if(casilla!=null) {
 			Batallon batallon=(Batallon)casilla;
 			//TODO cambiar cuando el batallon tenga todos los valores para la ficha
-			fichaInfo=new FichaInfo("/Imagenes/ligera.png", -1, batallon.getId(), -1,
+			fichaInfo=new FichaInfo("/Imagenes/archery.png", -1, batallon.getId(), -1,
 					-1, -1, -1, batallon.getMaximoSoldados(), false, Color.BLACK);
 		}
 		return fichaInfo;
@@ -60,5 +62,9 @@ public class Generador {
 			return new FichaBlanca();
 		}
 		return new Ficha(fichaInfo);
+	}
+	
+	public static TableroUIInfo getTableroUIInfo(Juego juego) {
+		return new TableroUIInfo(juego.getTablero());
 	}
 }

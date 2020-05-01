@@ -27,4 +27,13 @@ public class TableroUIInfo {
 			}
 		}
 	}
+	public FichaInfo[][] getFichasInfo(){
+		FichaInfo[][] fichasInfo = new FichaInfo[tablero.getAncho()][tablero.getAlto()];
+		for (int i = 0; i < fichasInfo.length; i++) {
+			for (int j = 0; j < fichasInfo[i].length; j++) {
+				fichasInfo[i][j]=Generador.getFichaInfo(tablero, new Coordenada(i, j));
+			}
+		}
+		return fichasInfo;
+	}
 }

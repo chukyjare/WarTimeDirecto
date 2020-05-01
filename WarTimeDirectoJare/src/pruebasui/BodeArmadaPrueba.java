@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import control.PobladorController;
+import control.Controller;
 import modelo.Ejercito;
 import vista.BordeArmada;
 import vista.MercadoSoldadoDialog;
@@ -22,7 +22,7 @@ public class BodeArmadaPrueba extends JFrame {
 	private JPanel contentPane;
 	private Ejercito ejercito;
 	private MercadoSoldadoDialog mercadoSoldado;
-	PobladorController pobladorController;
+	private Controller pobladorController;
 
 	/**
 	 * Launch the application.
@@ -62,7 +62,7 @@ public class BodeArmadaPrueba extends JFrame {
 				mercadoSoldado = new MercadoSoldadoDialog(
 						Generador.getMercadoSoldadoInfo(ejercito.getBatallonActual()));
 				mercadoSoldado.setVisible(true);
-				pobladorController=new PobladorController(ejercito.getBatallonActual());
+				pobladorController=new Controller(ejercito.getBatallonActual());
 				mercadoSoldado.getBtnOk().addActionListener(new ActionListener() {
 
 					@Override
