@@ -8,7 +8,9 @@ public class Batallon implements Casilla{
 	private final int maximoSoldados = 10;
 	private Tipo tipo;
 	private LinkedList<Soldado> soldados = new LinkedList<Soldado>();
-	private Color colorAtacante;
+	private Color colorAtacante=Color.RED;
+
+
 
 	public Batallon(int id, Tipo tipo) {
 		super();
@@ -22,6 +24,9 @@ public class Batallon implements Casilla{
 		this.colorAtacante = colorEjercitoAtacante;
 	}
 
+	public Color getColorAtacante() {
+		return colorAtacante;
+	}
 
 	public int getId() {
 		return id;
@@ -51,6 +56,17 @@ public class Batallon implements Casilla{
 //			response = soldados.add(soldado);
 //		}
 //		return response;
+	}
+
+
+	public String getImage(Tipo tipo) {
+		if(tipo==Tipo.infanteria) {
+			return "/Imagenes/ligera.png";
+		}
+		if(tipo==Tipo.arqueria) {
+			return "/Imagenes/archery.png";
+		}
+		return null;
 	}
 
 }

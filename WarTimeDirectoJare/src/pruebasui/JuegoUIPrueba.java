@@ -2,17 +2,23 @@ package pruebasui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.AbstractButton;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import control.Controller;
 import modelo.Batallon;
 import modelo.Coordenada;
 import modelo.Ejercito;
 import modelo.Tablero;
 import modelo.Tipo;
 import vista.BordeArmada;
+import vista.MercadoSoldadoDialog;
 import vista.TableroUI;
 import vista.Conversores.Generador;
 import vista.info.TableroUIInfo;
@@ -20,8 +26,11 @@ import vista.info.TableroUIInfo;
 public class JuegoUIPrueba extends JFrame {
 
 	private JPanel contentPane;
+	private MercadoSoldadoDialog mercadoSoldado;
+	private Controller pobladorController;
 	private TableroUI tableroUI;
 	private Ejercito ejercito;
+	
 	public TableroUI getTableroUI() {
 		return tableroUI;
 	}
@@ -42,6 +51,30 @@ public class JuegoUIPrueba extends JFrame {
 		contentPane.add(pobladorPanel, BorderLayout.WEST);
 		ejercito = new Ejercito(0);
 		pobladorPanel.cargarEjercito(Generador.getEjercitoInfo(ejercito));
+		getBtnPoblar(pobladorPanel).addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mercadoSoldado = new MercadoSoldadoDialog(
+						Generador.getMercadoSoldadoInfo(ejercito.getBatallonActual()));
+				mercadoSoldado.setVisible(true);
+				pobladorController=new Controller(ejercito.getBatallonActual());
+				mercadoSoldado.getBtnOk().addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+//						MercadoSoldadoDialog dialogo=(MercadoSoldadoDialog)e.getSource();
+						if (mercadoSoldado.compruebaMax()) {
+							// aqui es donde hay que conectar con el modelo de datos
+							pobladorController.poblarBatallon(mercadoSoldado.getListaEjercito());
+							mercadoSoldado.setVisible(false);
+							
+						}
+					}
+				});
+			}
+		});
+		
 		
 		
 		
@@ -54,5 +87,16 @@ public class JuegoUIPrueba extends JFrame {
 		contentPane.add(tableroUI, BorderLayout.CENTER);
 		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
 	}
+
+
+	private JButton getBtnPoblar(BordeArmada pobladorPanel) {
+		return pobladorPanel.getBtnPoblar();
+	}
+
+
+	
+
+
+	
 
 }

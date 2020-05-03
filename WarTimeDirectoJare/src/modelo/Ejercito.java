@@ -1,5 +1,6 @@
 package modelo;
 
+import java.awt.Color;
 import java.util.LinkedList;
 
 public class Ejercito {
@@ -11,11 +12,19 @@ public class Ejercito {
 	// Aunque tiene caracteristicas de SET (los batallones no se repiten)
 	// me conviene una list porque puedo hacer get(i)
 	LinkedList<Batallon> batallones = new LinkedList<Batallon>();
+	private Color colorEjercito=Color.GRAY;
 	
+	
+	public Color getColorEjercito() {
+		return colorEjercito;
+	}
 	
 	public Ejercito(int id) {
 		super();
 		this.id = id;
+		if (id==1) {
+			this.colorEjercito=Color.BLACK;
+		}
 		crearEjercito();
 	}
 	public boolean setSiguienteBatallon() {

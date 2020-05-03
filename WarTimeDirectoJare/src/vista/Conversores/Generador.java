@@ -50,9 +50,10 @@ public class Generador {
 		FichaInfo fichaInfo=null;
 		if(casilla!=null) {
 			Batallon batallon=(Batallon)casilla;
+			Ejercito ejercito= new Ejercito(batallon.getId());
 			//TODO cambiar cuando el batallon tenga todos los valores para la ficha
-			fichaInfo=new FichaInfo("/Imagenes/archery.png", -1, batallon.getId(), -1,
-					-1, -1, -1, batallon.getMaximoSoldados(), false, Color.BLACK);
+			fichaInfo=new FichaInfo(batallon.getImage(batallon.getTipo()), -1, batallon.getId(), -1,
+					-1, -1, -1, batallon.getMaximoSoldados(), false, ejercito.getColorEjercito(), batallon.getColorAtacante());
 		}
 		return fichaInfo;
 	}

@@ -24,6 +24,8 @@ public class BodeArmadaPrueba extends JFrame {
 	private MercadoSoldadoDialog mercadoSoldado;
 	private Controller pobladorController;
 
+	
+
 	/**
 	 * Launch the application.
 	 */
